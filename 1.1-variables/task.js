@@ -6,23 +6,22 @@
  */
 
 function averageMark(a, g, p) {
-	let algebra = a;
-	let geography = g;
-	let physics = p;
-
-	return mark = Math.round((a + g + p) / 3);
+	
+    // реализуйте здесь задание №1
+    
+	return // ваш ответ;
 }
 
 function sayHello(userName) {
-	let myName = userName;
+	
+    // реализуйте здесь задание №2
     
-	return message = `Привет, мир! Меня зовут ${myName}.`;
+	return // ваш ответ;
 }
 
 function calculateFormula() {
-    let x = 2;
-	let y = 22;
-	let z = 0;
     
-    return result = x * y + 5 * z + x - 1;
+	// реализуйте здесь задание №3
+    
+    return // ваш ответ;
 }
