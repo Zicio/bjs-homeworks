@@ -18,14 +18,15 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
         let today = new Date();
         let period = (date.getFullYear() - today.getFullYear()) * 12 - (date.getMonth() - today.getMonth());
         let monthlyPay = capital * (percent + percent / (((1 + percent) ** period) - 1));
-        totalAmount = ((monthlyPay * period).toFixed(2));
-        totalAmount = String(totalAmount);
+        totalAmount = +((monthlyPay * period).toFixed(2));
         console.log(totalAmount);
     }
     return totalAmount;
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    // return greeting;
+    if (!name) {
+        name = 'Аноним';
+    }
+    return `Привет, мир! Меня зовут ${name}.`;
 }
