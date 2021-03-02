@@ -1,7 +1,6 @@
 'use strict';
 function calculateTotalMortgage(percent, contribution, amount, date) {
     let totalAmount;
-    console.log(typeof date);
     if (Number.isNaN(parseInt(percent)) || parseInt(percent) < 0) {
         return `Параметр percent содержит неправильное значение "${percent}"`;
     }
@@ -30,7 +29,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function getGreeting(name) {
-    if (!name) {
+    if (!name || name.trim().length === 0) {
         name = 'Аноним';
     }
     return `Привет, мир! Меня зовут ${name}.`;
