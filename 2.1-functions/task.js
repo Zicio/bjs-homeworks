@@ -10,15 +10,15 @@ function getSolutions(a, b, c) {
         };
     }
     else if (D === 0) {
-        x1 = -b / 2 * a;
+        x1 = -b / (2 * a);
         return { 
             D, 
             roots: [x1] 
         };
     }
     else {
-        x1 = (-b + Math.sqrt(D)) / 2 * a;
-        x2 = (-b - Math.sqrt(D)) / 2 * a;
+        x1 = (-b + Math.sqrt(D)) / (2 * a);
+        x2 = (-b - Math.sqrt(D)) / (2 * a);
         return { 
             D, 
             roots: [x1, x2] 
@@ -34,12 +34,9 @@ function showSolutionsMessage(a, b, c) {
         return 'Уравнение не имеет вещественных корней';
     }
     else if (result.D === 0) {
-        return `Уравнение имеет один корень X₁ = ${result.x1}`;        
+        return `Уравнение имеет один корень X₁ = ${result.roots}`;    
     }
     else {
-        return `Уравнение имеет два корня. X₁ = ${result.x1}, X₂ = ${result.x2}`;
+        return `Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`;
     }
 }
-
-showSolutionsMessage(1, 10, 3);
-debugger;
