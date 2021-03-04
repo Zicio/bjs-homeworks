@@ -10,7 +10,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     else if (Number.isNaN(parseInt(amount)) || parseInt(amount) < 0) {
         return `Параметр amount содержит неправильное значение "${amount}"`;
     }
-    else if (Date.parse(date) !== Date.parse(date)) {
+    else if (Number.isNaN(Date.parse(date))) {
         return 'Вы не заполнили параметр date';
     }
     percent = parseInt(percent) / 1200;

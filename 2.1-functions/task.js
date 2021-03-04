@@ -45,40 +45,56 @@ function showSolutionsMessage(a, b, c) {
 
 //Задача №2
 function getAverageScore(data) {
+//Проверка на пустой объект data
     if (Object.keys(data).length === 0) {
         data.average = 0;
         return data;
     }
     else {
+//изменение значений на средние значения в объекте data
         for (let prop in data) {
-            console.log(`Свойство ${prop}, значение: ${getAverageMark(data[prop])}`);
             data[prop] = getAverageMark(data[prop]);
         }
-
-        //Добавление доп.свойства average
-
-        //1 вариант  (как я понял reduce не работает при пустом объекте data)
+//Добавление доп.свойства average в объект data
+//1 вариант (как я понял reduce не работает при пустом объекте data)
         /* data.average = (Object.values(data).reduce((a, b) => (a + b)) / (Object.values(data)).length);*/
-
-        //2 вариант
-        let sum1 = 0;
+//2 вариант
+        let sumScore = 0;
         for (let i = 0; i < Object.values(data).length; i++)  {
-            sum1 += (Object.values(data))[i];
+            sumScore += (Object.values(data))[i];
         }
-        data.average = sum1 / Object.values(data).length;
+        data.average = sumScore / Object.values(data).length;
         return data;
     }
 }
 
 function getAverageMark(marks) {
-    let sum = 0;
+    let sumMarks = 0;
     if (marks.length === 0) {
-        return sum;
+        return sumMarks;
     }
     else {
         for (let i = 0; i < marks.length; i++) {
-        sum += marks[i];
+            sumMarks += marks[i];
         }
-        return sum / marks.length;
+        return sumMarks / marks.length;
     }  
+}
+
+
+//Задача №3
+function getPersonData(secretData) {
+    return {
+        firstName: getDecodedValue(secretData.aaa),
+        lastName: getDecodedValue(secretData.bbb)
+    };
+}
+
+function getDecodedValue(secret) {
+    if (secret === 0) {
+        return 'Родриго';
+    }
+    else if (secret === 1) {
+        return 'Эмильо';
+    }
 }
