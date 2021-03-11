@@ -61,3 +61,40 @@ class DetectiveBook extends Book {
         this.type = 'detective';
     }
 }
+
+
+//Задача №2
+class Library extends PrintEditionItem {
+    constructor(name, books) {
+        super();
+        this.name = name;
+        this.books = [];
+    }
+
+    addBook(book) {
+        if (this.state > 30) {
+            this.books.push(book);
+        }
+    }
+
+ /*   Тест проходит, но код неверный. Должен реагировать на любой type.
+    findBookBy(type, value) {
+        if (this.books.find(item => item.releaseDate === value)) {
+            return (this.books.find(item => item.releaseDate === value));            
+        }
+        else {
+            return null;
+        }
+    }
+*/
+    giveBookByName(bookName) {
+        let searchableBook = this.books.find(item => item.name === bookName);
+        if (searchableBook) {
+            this.books.splice((this.books.indexOf(searchableBook)), 1);
+            return searchableBook;
+        }
+        else {
+            return null;
+        }
+    }
+}
