@@ -2,12 +2,13 @@
 //Задача №1
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
-        this.name = name;
-        this.releaseDate = releaseDate;
-        this.pagesCount = pagesCount;
-        this.state = 100;
-        this.type = null;
+        this.name = name,
+        this.releaseDate = releaseDate,
+        this.pagesCount = pagesCount,
+        this.state = 100,
+        this.type = null
     }
+
     fix() {
         return this.state * 1.5;
     }
@@ -28,47 +29,47 @@ class PrintEditionItem {
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
-        super(name, releaseDate, pagesCount);
-        this.type = 'magazine';
+        super(name, releaseDate, pagesCount),
+        this.type = 'magazine'
     }
 }
 
 class Book extends PrintEditionItem {
     constructor(author, name, releaseDate, pagesCount) {
-        super(name, releaseDate, pagesCount);
-        this.author = author;
-        this.type = 'book';
+        super(name, releaseDate, pagesCount),
+        this.author = author,
+        this.type = 'book'
     }
 }
 
 class NovelBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount);
-        this.type = 'novel';
+        super(author, name, releaseDate, pagesCount),
+        this.type = 'novel'
     }
 }
 
 class FantasticBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount);
-        this.type = 'fantastic';
+        super(author, name, releaseDate, pagesCount),
+        this.type = 'fantastic'
     }
 }
 
 class DetectiveBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount);
-        this.type = 'detective';
+        super(author, name, releaseDate, pagesCount),
+        this.type = 'detective'
     }
 }
 
 
 //Задача №2
 class Library extends PrintEditionItem {
-    constructor(name, books) {
-        super();
-        this.name = name;
-        this.books = [];
+    constructor(name) {
+        super(),
+        this.name = name,
+        this.books = []
     }
 
     addBook(book) {
@@ -77,16 +78,15 @@ class Library extends PrintEditionItem {
         }
     }
 
- /*   Тест проходит, но код неверный. Должен реагировать на любой type.
     findBookBy(type, value) {
-        if (this.books.find(item => item.releaseDate === value)) {
-            return (this.books.find(item => item.releaseDate === value));            
+        if (this.books.find(item => item[type] === value)) {
+            return (this.books.find(item => item[type] === value));            
         }
         else {
             return null;
         }
     }
-*/
+
     giveBookByName(bookName) {
         let searchableBook = this.books.find(item => item.name === bookName);
         if (searchableBook) {
@@ -96,5 +96,21 @@ class Library extends PrintEditionItem {
         else {
             return null;
         }
+    }
+}
+
+//Задача №3
+class StudentLog{
+    constructor(name)  {
+        this.name = name,
+        this.obj = {}
+    }
+
+    getName() {
+        return this.name;
+    }
+//метод такой робит 
+    addGrade(grade, subject) {
+        this.obj[subject] = grade;
     }
 }
