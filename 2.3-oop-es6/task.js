@@ -2,11 +2,11 @@
 //Задача №1
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
-        this.name = name,
-        this.releaseDate = releaseDate,
-        this.pagesCount = pagesCount,
-        this.state = 100,
-        this.type = null
+        this.name = name;
+        this.releaseDate = releaseDate;
+        this.pagesCount = pagesCount;
+        this.state = 100;
+        this.type = null;
     }
 
     fix() {
@@ -29,37 +29,37 @@ class PrintEditionItem {
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
-        super(name, releaseDate, pagesCount),
-        this.type = 'magazine'
+        super(name, releaseDate, pagesCount);
+        this.type = 'magazine';
     }
 }
 
 class Book extends PrintEditionItem {
     constructor(author, name, releaseDate, pagesCount) {
-        super(name, releaseDate, pagesCount),
-        this.author = author,
-        this.type = 'book'
+        super(name, releaseDate, pagesCount);
+        this.author = author;
+        this.type = 'book';
     }
 }
 
 class NovelBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount),
-        this.type = 'novel'
+        super(author, name, releaseDate, pagesCount);
+        this.type = 'novel';
     }
 }
 
 class FantasticBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount),
-        this.type = 'fantastic'
+        super(author, name, releaseDate, pagesCount);
+        this.type = 'fantastic';
     }
 }
 
 class DetectiveBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount),
-        this.type = 'detective'
+        super(author, name, releaseDate, pagesCount);
+        this.type = 'detective';
     }
 }
 
@@ -67,13 +67,13 @@ class DetectiveBook extends Book {
 //Задача №2
 class Library extends PrintEditionItem {
     constructor(name) {
-        super(),
-        this.name = name,
-        this.books = []
+        super();
+        this.name = name;
+        this.books = [];
     }
 
     addBook(book) {
-        if (this.state > 30) {
+        if (book.state > 30) {
             this.books.push(book);
         }
     }
@@ -88,7 +88,7 @@ class Library extends PrintEditionItem {
     }
 
     giveBookByName(bookName) {
-        let searchableBook = this.books.find(item => item.name === bookName);
+        const searchableBook = this.books.find(item => item.name === bookName);
         if (searchableBook) {
             this.books.splice((this.books.indexOf(searchableBook)), 1);
             return searchableBook;
@@ -102,15 +102,61 @@ class Library extends PrintEditionItem {
 //Задача №3
 class StudentLog{
     constructor(name)  {
-        this.name = name,
-        this.obj = {}
+        this.name = name;
+        this.base = {};
     }
 
     getName() {
         return this.name;
     }
-//метод такой робит 
+
     addGrade(grade, subject) {
-        this.obj[subject] = grade;
+        if (+grade >= 1 && +grade <= 5) {
+            if (this.base[subject] === undefined) {
+                this.base[subject] = Array.of(grade);
+                return this.base[subject].length;
+            }
+            else {
+                this.base[subject].push(grade);
+                return this.base[subject].length;
+            }
+        }
+        else {
+            console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
+            if (this.base[subject] === undefined) {
+                this.base[subject] = [];
+            }
+            return this.base[subject].length;
+        }
+    }
+
+    getAverageBySubject(subject) {
+        if (subject in this.base) {
+            let sumGrades = 0;
+            for (let  i = 0; i < this.base[subject].length; i++) {
+                sumGrades += this.base[subject][i];
+            }
+            const averageGrades = sumGrades / this.base[subject].length;
+            return averageGrades;
+        }
+        else {
+            return 0;
+        }
+        
+    }
+
+    getTotalAverage() {
+        const TotalSumGradesArr = Object.values(this.base).join().split(',');
+        if (TotalSumGradesArr.length !== 0) {
+            let TotalSumGrades = 0;
+            for (let  i = 0; i < TotalSumGradesArr.length; i++) {
+                TotalSumGrades += +TotalSumGradesArr[i];
+            }
+            const TotalAverageGrades = TotalSumGrades / TotalSumGradesArr.length;
+            return TotalAverageGrades;
+        }
+        else {
+            return 0;
+        }
     }
 }
