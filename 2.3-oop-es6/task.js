@@ -100,7 +100,7 @@ class Library extends PrintEditionItem {
 }
 
 //Задача №3
-class StudentLog{
+class StudentLog {
     constructor(name)  {
         this.name = name;
         this.base = {};
