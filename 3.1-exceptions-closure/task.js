@@ -20,9 +20,9 @@ function validateCount(value) {
 //Задача №2
 class Triangle {
     constructor(firstSide, secondSide, thirdSide) {
-        this.firstSide: firstSide;
-        this.secondSide: secondSide;
-        this.thirdSide: thirdSide;
+        this.firstSide = firstSide;
+        this.secondSide = secondSide;
+        this.thirdSide = thirdSide;
         if (this.firstSide + this.secondSide < this.thirdSide || this.firstSide + this.thirdSide < this.secondSide || this.secondSide + this.thirdSide < this.firstSide) {
             const error = new Error ('Треугольник с такими сторонами не существует');
             throw error;
@@ -34,7 +34,7 @@ class Triangle {
     }
 
     getArea() {
-        return (Math.sqrt(this.getPerimeter() / 2 * (this.getPerimeter() / 2 - this.firstSide) * (this.getPerimeter() / 2 - this.secondSide) * (this.getPerimeter() / 2 - this.thirdSide))).toFixed(3);
+        return +(Math.sqrt(this.getPerimeter() / 2 * (this.getPerimeter() / 2 - this.firstSide) * (this.getPerimeter() / 2 - this.secondSide) * (this.getPerimeter() / 2 - this.thirdSide))).toFixed(3);
     }
 }
 
@@ -43,6 +43,15 @@ function getTriangle(firstSide, secondSide, thirdSide) {
         return new Triangle(firstSide, secondSide, thirdSide);
     }
     catch(error) {
-        //
+        const obj = {
+            getPerimeter() {
+                return 'Ошибка! Треугольник не существует';
+            }, // <= Не понял, почему тут требуется поставить именно запятую
+
+            getArea() {
+                return 'Ошибка! Треугольник не существует';
+            }
+        }
+     return obj;      
     }
 }
