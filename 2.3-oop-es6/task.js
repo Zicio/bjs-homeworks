@@ -10,7 +10,7 @@ class PrintEditionItem {
     }
 
     fix() {
-        return this.state * 1.5;
+        return this.state *= 1.5;
     }
 
     set state(state) {
@@ -19,6 +19,9 @@ class PrintEditionItem {
         }
         else if (state >= 100) {
             this._state = 100;
+        }
+        else {
+            this._state = state;
         }
     }
 
@@ -65,9 +68,8 @@ class DetectiveBook extends Book {
 
 
 //Задача №2
-class Library extends PrintEditionItem {
+class Library {
     constructor(name) {
-        super();
         this.name = name;
         this.books = [];
     }
