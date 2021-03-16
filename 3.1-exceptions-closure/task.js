@@ -2,8 +2,7 @@
 //Задача №1
 function parseCount(value) {
     if (Number.isNaN(Number.parseInt(value))) {
-        const error = new Error ('Невалидное значение');
-        throw error;
+        throw new Error ('Невалидное значение');
     }
     return Number.parseInt(value);
 }
@@ -23,9 +22,8 @@ class Triangle {
         this.firstSide = firstSide;
         this.secondSide = secondSide;
         this.thirdSide = thirdSide;
-        if (this.firstSide + this.secondSide < this.thirdSide || this.firstSide + this.thirdSide < this.secondSide || this.secondSide + this.thirdSide < this.firstSide) {
-            const error = new Error ('Треугольник с такими сторонами не существует');
-            throw error;
+        if (firstSide + secondSide < thirdSide || firstSide + thirdSide < secondSide || secondSide + thirdSide < firstSide) {
+            throw new Error ('Треугольник с такими сторонами не существует');
         }
     }
 
@@ -43,15 +41,14 @@ function getTriangle(firstSide, secondSide, thirdSide) {
         return new Triangle(firstSide, secondSide, thirdSide);
     }
     catch(error) {
-        const obj = {
+        return {
             getPerimeter() {
                 return 'Ошибка! Треугольник не существует';
-            }, // <= Не понял, почему тут требуется поставить именно запятую
+            },
 
             getArea() {
                 return 'Ошибка! Треугольник не существует';
             }
-        }
-     return obj;      
+        }     
     }
 }
